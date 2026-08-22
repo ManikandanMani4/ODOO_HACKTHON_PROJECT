@@ -6,10 +6,10 @@ function RoleRedirectPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Get logged-in user data
+    // Get user data from localStorage
     const userData = localStorage.getItem("user");
 
-    // If no user is found, go to login page
+    // If user is not logged in, go back to login
     if (!userData) {
       navigate("/");
       return;
@@ -17,26 +17,35 @@ function RoleRedirectPage() {
 
     const user = JSON.parse(userData);
 
-    // Wait for 1.5 seconds and redirect based on role
+    // Wait for 1.5 seconds
     const timer = setTimeout(() => {
+      // Redirect Employee
       if (user.role === "employee") {
         navigate("/employee-dashboard");
-      } else if (user.role === "admin" || user.role === "hr") {
+      }
+
+      // Redirect Admin or HR
+      else if (
+        user.role === "admin" ||
+        user.role === "hr"
+      ) {
         navigate("/admin-dashboard");
-      } else {
+      }
+
+      // Invalid role
+      else {
         navigate("/");
       }
     }, 1500);
 
+    // Clear timer when page closes
     return () => clearTimeout(timer);
   }, [navigate]);
 
   return (
     <div className="role-redirect-page">
       <div className="redirect-card">
-        <div className="logo">
-          <span className="logo-text">dayflow</span>
-        </div>
+        <h1>DAYFLOW</h1>
 
         <div className="loader"></div>
 
