@@ -1,52 +1,40 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import RoleRedirectPage from "./pages/RoleRedirectPage";
-import AdminDashboard from "./pages/AdminDashboard";
-import EmployeeDashboard from "./pages/EmployeeDashboard";
 
 function App() {
   return (
-    <Routes>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
 
-      {/* Login */}
-      <Route path="/" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
 
-      {/* Signup */}
-      <Route path="/signup" element={<SignupPage />} />
+        <Route
+          path="/forgot-password"
+          element={<ForgotPasswordPage />}
+        />
 
-      {/* Forgot Password */}
-      <Route
-        path="/forgot-password"
-        element={<ForgotPasswordPage />}
-      />
+        <Route
+          path="/role-redirect"
+          element={<RoleRedirectPage />}
+        />
 
-      {/* Role Redirect */}
-      <Route
-        path="/role-redirect"
-        element={<RoleRedirectPage />}
-      />
+        {/* Temporary dashboard */}
+        <Route
+          path="/admin-dashboard"
+          element={<h1>Admin Dashboard - Coming Soon</h1>}
+        />
 
-      {/* Dashboards */}
-      <Route
-        path="/admin-dashboard"
-        element={<AdminDashboard />}
-      />
-
-      <Route
-        path="/employee-dashboard"
-        element={<EmployeeDashboard />}
-      />
-
-      {/* Unknown page */}
-      <Route
-        path="*"
-        element={<Navigate to="/" replace />}
-      />
-
-    </Routes>
+        <Route
+          path="/employee-dashboard"
+          element={<h1>Employee Dashboard - Coming Soon</h1>}
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
