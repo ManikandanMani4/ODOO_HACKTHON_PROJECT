@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AttendanceService from "../../services/AttendanceService";
+import "../../styles/Attendance.css";
 
 function AttendancePage() {
   const navigate = useNavigate();
-
   const [todayRecord, setTodayRecord] = useState(null);
 
   useEffect(() => {
@@ -39,80 +39,103 @@ function AttendancePage() {
   };
 
   return (
-    <div>
-      <h1>Attendance Management</h1>
+    <div className="attendance-page">
+      <div className="attendance-container">
 
-      <h2>Today's Attendance</h2>
+        <h1>Attendance Management</h1>
 
-      <p>
-        <strong>Date:</strong>{" "}
-        {new Date().toDateString()}
-      </p>
+        <p className="attendance-description">
+          Manage your daily attendance and working hours.
+        </p>
 
-      <hr />
+        <div className="attendance-card">
+          <h2>Today's Attendance</h2>
 
-      <p>
-        <strong>Status:</strong>{" "}
-        {todayRecord ? todayRecord.status : "Not Checked In"}
-      </p>
+          <p>
+            <strong>Date:</strong>{" "}
+            {new Date().toDateString()}
+          </p>
 
-      <p>
-        <strong>Check In Time:</strong>{" "}
-        {todayRecord
-          ? AttendanceService.formatTime(todayRecord.checkIn)
-          : "--"}
-      </p>
+          <div className="attendance-status">
+            <strong>Status:</strong>{" "}
+            {todayRecord
+              ? todayRecord.status
+              : "Not Checked In"}
+          </div>
 
-      <button
-        onClick={handleCheckIn}
-        disabled={todayRecord}
-      >
-        Check In
-      </button>
+          <div className="attendance-details">
+            <p>
+              <strong>Check In Time:</strong>{" "}
+              {todayRecord
+                ? AttendanceService.formatTime(
+                    todayRecord.checkIn
+                  )
+                : "--"}
+            </p>
 
-      <br />
-      <br />
+            <p>
+              <strong>Check Out Time:</strong>{" "}
+              {todayRecord && todayRecord.checkOut
+                ? AttendanceService.formatTime(
+                    todayRecord.checkOut
+                  )
+                : "--"}
+            </p>
 
-      <p>
-        <strong>Check Out Time:</strong>{" "}
-        {todayRecord && todayRecord.checkOut
-          ? AttendanceService.formatTime(todayRecord.checkOut)
-          : "--"}
-      </p>
+            <p>
+              <strong>Working Hours:</strong>{" "}
+              {todayRecord
+                ? todayRecord.workingHours
+                : "--"}
+            </p>
+          </div>
 
-      <button
-        onClick={handleCheckOut}
-        disabled={!todayRecord || todayRecord.checkOut}
-      >
-        Check Out
-      </button>
+          <div className="attendance-actions">
+            <button
+              className="attendance-button"
+              onClick={handleCheckIn}
+              disabled={!!todayRecord}
+            >
+              Check In
+            </button>
 
-      <br />
-      <br />
+            <button
+              className="attendance-button"
+              onClick={handleCheckOut}
+              disabled={
+                !todayRecord || !!todayRecord.checkOut
+              }
+            >
+              Check Out
+            </button>
+          </div>
+        </div>
 
-      <p>
-        <strong>Working Hours:</strong>{" "}
-        {todayRecord
-          ? todayRecord.workingHours
-          : "--"}
-      </p>
+        <div className="attendance-card">
+          <h2>Attendance Records</h2>
 
-      <hr />
+          <div className="attendance-actions">
+            <button
+              className="attendance-button"
+              onClick={() =>
+                navigate("/attendance/history")
+              }
+            >
+              Attendance History
+            </button>
 
-      <button
-        onClick={() => navigate("/attendance/history")}
-      >
-        Attendance History
-      </button>
+            <button
+              className="attendance-button"
+              onClick={() =>
+                navigate("/attendance/summary")
+              }
+            >
+              Monthly Summary
+            </button>
+          </div>
+        </div>
 
-      <br />
-      <br />
-
-      <button
-        onClick={() => navigate("/attendance/summary")}
-      >
-        Monthly Summary
-      </button>
+      </div>
     </div>
   );
 }

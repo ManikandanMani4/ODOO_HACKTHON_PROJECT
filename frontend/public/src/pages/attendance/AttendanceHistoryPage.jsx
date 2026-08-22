@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AttendanceService from "../../services/AttendanceService";
+import "../../styles/Attendance.css";
 
 function AttendanceHistoryPage() {
   const navigate = useNavigate();
@@ -16,55 +17,66 @@ function AttendanceHistoryPage() {
   };
 
   return (
-    <div>
-      <h1>Attendance History</h1>
+    <div className="history-page">
+      <div className="history-container">
 
-      <button onClick={() => navigate("/attendance")}>
-        Back to Attendance
-      </button>
+        <h1>Attendance History</h1>
 
-      <br />
-      <br />
+        <button
+          className="attendance-button"
+          onClick={() => navigate("/attendance")}
+        >
+          Back to Attendance
+        </button>
 
-      {records.length === 0 ? (
-        <h3>No attendance records found.</h3>
-      ) : (
-        <table border="1" cellPadding="10">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Check In</th>
-              <th>Check Out</th>
-              <th>Working Hours</th>
-              <th>Status</th>
-            </tr>
-          </thead>
+        <br />
+        <br />
 
-          <tbody>
-            {records.map((record) => (
-              <tr key={record.id}>
-                <td>{record.date}</td>
+        {records.length === 0 ? (
+          <div className="attendance-card">
+            <h3>No attendance records found.</h3>
+          </div>
+        ) : (
+          <div className="history-table-container">
+            <table className="history-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Check In</th>
+                  <th>Check Out</th>
+                  <th>Working Hours</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
 
-                <td>
-                  {record.checkIn
-                    ? AttendanceService.formatTime(record.checkIn)
-                    : "--"}
-                </td>
+              <tbody>
+                {records.map((record) => (
+                  <tr key={record.id}>
+                    <td>{record.date}</td>
 
-                <td>
-                  {record.checkOut
-                    ? AttendanceService.formatTime(record.checkOut)
-                    : "--"}
-                </td>
+                    <td>
+                      {record.checkIn
+                        ? AttendanceService.formatTime(record.checkIn)
+                        : "--"}
+                    </td>
 
-                <td>{record.workingHours}</td>
+                    <td>
+                      {record.checkOut
+                        ? AttendanceService.formatTime(record.checkOut)
+                        : "--"}
+                    </td>
 
-                <td>{record.status}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+                    <td>{record.workingHours}</td>
+
+                    <td>{record.status}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+
+      </div>
     </div>
   );
 }

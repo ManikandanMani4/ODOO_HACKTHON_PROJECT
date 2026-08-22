@@ -1,0 +1,237 @@
+/* ================================
+   ATTENDANCE MAIN PAGE
+================================ */
+
+.attendance-page {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: #f4f6f9;
+  font-family: Arial, sans-serif;
+}
+
+.attendance-container {
+  max-width: 900px;
+  margin: auto;
+}
+
+.attendance-page h1 {
+  text-align: center;
+  color: #2563eb;
+  margin-bottom: 10px;
+}
+
+.attendance-page h2 {
+  color: #1e293b;
+}
+
+.attendance-description {
+  text-align: center;
+  color: #64748b;
+  margin-bottom: 30px;
+}
+
+
+/* ================================
+   ATTENDANCE CARD
+================================ */
+
+.attendance-card {
+  background: white;
+  padding: 30px;
+  border-radius: 14px;
+  margin-bottom: 25px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.attendance-card h2 {
+  margin-top: 0;
+}
+
+.attendance-status {
+  padding: 15px;
+  border-radius: 8px;
+  background: #eff6ff;
+  color: #2563eb;
+  margin: 15px 0;
+}
+
+
+/* ================================
+   BUTTONS
+================================ */
+
+.attendance-button {
+  width: 100%;
+  padding: 13px;
+  margin-top: 12px;
+
+  background: #2563eb;
+  color: white;
+
+  border: none;
+  border-radius: 8px;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.attendance-button:hover {
+  background: #1d4ed8;
+}
+
+.attendance-button:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+}
+
+
+/* ================================
+   ATTENDANCE ACTIONS
+================================ */
+
+.attendance-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.attendance-actions button {
+  flex: 1;
+}
+
+
+/* ================================
+   HISTORY PAGE
+================================ */
+
+.history-page {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: #f4f6f9;
+  font-family: Arial, sans-serif;
+}
+
+.history-container {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.history-page h1 {
+  text-align: center;
+  color: #2563eb;
+  margin-bottom: 30px;
+}
+
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+
+  border-radius: 10px;
+  overflow: hidden;
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.history-table th {
+  background: #2563eb;
+  color: white;
+  padding: 14px;
+  text-align: left;
+}
+
+.history-table td {
+  padding: 14px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.history-table tr:hover {
+  background: #f8fafc;
+}
+
+
+/* ================================
+   SUMMARY PAGE
+================================ */
+
+.summary-page {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: #f4f6f9;
+  font-family: Arial, sans-serif;
+}
+
+.summary-container {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.summary-page h1 {
+  text-align: center;
+  color: #2563eb;
+  margin-bottom: 35px;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.summary-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.summary-card h3 {
+  margin-top: 0;
+  color: #64748b;
+  font-size: 15px;
+}
+
+.summary-card p {
+  margin-bottom: 0;
+  font-size: 28px;
+  font-weight: bold;
+  color: #2563eb;
+}
+
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 768px) {
+  .summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .attendance-actions {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 500px) {
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .attendance-card {
+    padding: 20px;
+  }
+
+  .history-table {
+    font-size: 12px;
+  }
+
+  .history-table th,
+  .history-table td {
+    padding: 8px;
+  }
+}

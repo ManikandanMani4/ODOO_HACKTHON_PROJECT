@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LeaveService from "../../services/LeaveService";
+import "../../styles/Leave.css";
 
 function ApplyLeavePage() {
   const navigate = useNavigate();
@@ -40,101 +41,119 @@ function ApplyLeavePage() {
         endDate: "",
         reason: "",
       });
+    } else {
+      setMessage(result.message || "Failed to submit leave request.");
     }
   };
 
   return (
-    <div>
-      <h1>Apply Leave</h1>
+    <div className="leave-page">
+      <div className="leave-container">
+        <h1>Apply Leave</h1>
 
-      <button onClick={() => navigate("/attendance")}>
-        Back to Attendance
-      </button>
+        <p className="leave-description">
+          Submit your leave request for approval.
+        </p>
 
-      <br />
-      <br />
-
-      {message && <p>{message}</p>}
-
-      <form onSubmit={handleSubmit}>
-
-        <div>
-          <label>Leave Type</label>
-          <br />
-
-          <select
-            name="leaveType"
-            value={formData.leaveType}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Select Leave Type</option>
-            <option value="Sick Leave">Sick Leave</option>
-            <option value="Casual Leave">Casual Leave</option>
-            <option value="Personal Leave">Personal Leave</option>
-            <option value="Vacation Leave">Vacation Leave</option>
-          </select>
-        </div>
-
-        <br />
-
-        <div>
-          <label>Start Date</label>
-          <br />
-
-          <input
-            type="date"
-            name="startDate"
-            value={formData.startDate}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <br />
-
-        <div>
-          <label>End Date</label>
-          <br />
-
-          <input
-            type="date"
-            name="endDate"
-            value={formData.endDate}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <br />
-
-        <div>
-          <label>Reason</label>
-          <br />
-
-          <textarea
-            name="reason"
-            value={formData.reason}
-            onChange={handleChange}
-            placeholder="Enter reason for leave"
-            rows="5"
-            required
-          />
-        </div>
-
-        <br />
-
-        <button type="submit">
-          Submit Leave Request
+        <button
+          className="back-button"
+          onClick={() => navigate("/employee-dashboard")}
+        >
+          ← Back to Dashboard
         </button>
 
-      </form>
+        {message && (
+          <div className="leave-message">
+            {message}
+          </div>
+        )}
 
-      <br />
+        <form
+          className="leave-form"
+          onSubmit={handleSubmit}
+        >
+          <div className="leave-form-group">
+            <label>Leave Type</label>
 
-      <button onClick={() => navigate("/leave/history")}>
-        View Leave History
-      </button>
+            <select
+              name="leaveType"
+              value={formData.leaveType}
+              onChange={handleChange}
+              required
+            >
+              <option value="">
+                Select Leave Type
+              </option>
+
+              <option value="Sick Leave">
+                Sick Leave
+              </option>
+
+              <option value="Casual Leave">
+                Casual Leave
+              </option>
+
+              <option value="Personal Leave">
+                Personal Leave
+              </option>
+
+              <option value="Vacation Leave">
+                Vacation Leave
+              </option>
+            </select>
+          </div>
+
+          <div className="leave-form-group">
+            <label>Start Date</label>
+
+            <input
+              type="date"
+              name="startDate"
+              value={formData.startDate}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="leave-form-group">
+            <label>End Date</label>
+
+            <input
+              type="date"
+              name="endDate"
+              value={formData.endDate}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="leave-form-group">
+            <label>Reason</label>
+
+            <textarea
+              name="reason"
+              value={formData.reason}
+              onChange={handleChange}
+              placeholder="Enter reason for leave"
+              required
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="leave-button"
+          >
+            Submit Leave Request
+          </button>
+        </form>
+
+        <button
+          className="refresh-button"
+          onClick={() => navigate("/leave/history")}
+        >
+          View Leave History
+        </button>
+      </div>
     </div>
   );
 }
