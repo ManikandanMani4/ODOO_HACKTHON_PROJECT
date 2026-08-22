@@ -20,20 +20,22 @@ function LoginPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Temporary login
     console.log("Login Data:", formData);
 
-    // After successful login
+    // Temporary role for testing
+    localStorage.setItem("userRole", "admin");
+
     navigate("/role-redirect");
   };
 
   return (
     <div className="login-page">
       <div className="login-container">
-        
+
         <div className="login-left">
           <h1>DayFlow</h1>
           <h2>Welcome Back!</h2>
+
           <p>
             Manage your work, attendance, tasks and daily activities
             all in one place.
@@ -42,15 +44,18 @@ function LoginPage() {
 
         <div className="login-right">
           <div className="login-card">
+
             <h2>Login</h2>
+
             <p className="subtitle">
               Enter your details to access your account
             </p>
 
             <form onSubmit={handleSubmit}>
-              
+
               <div className="input-group">
                 <label>Email Address</label>
+
                 <input
                   type="email"
                   name="email"
@@ -63,6 +68,7 @@ function LoginPage() {
 
               <div className="input-group">
                 <label>Password</label>
+
                 <input
                   type="password"
                   name="password"
@@ -95,10 +101,12 @@ function LoginPage() {
 
             <p className="signup-text">
               Don't have an account?{" "}
+
               <span onClick={() => navigate("/signup")}>
                 Sign Up
               </span>
             </p>
+
           </div>
         </div>
 

@@ -1,0 +1,55 @@
+.role-redirect-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f5f7fb;
+  font-family: Arial, sans-serif;
+}
+
+.redirect-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 50px 35px;
+  background: white;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+}
+
+.redirect-card h1 {
+  margin-bottom: 30px;
+  color: #2563eb;
+  letter-spacing: 2px;
+}
+
+.redirect-card h2 {
+  color: #1f2937;
+  margin-bottom: 10px;
+}
+
+.redirect-card p {
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+.loader {
+  width: 45px;
+  height: 45px;
+  margin: 0 auto 25px;
+  border: 5px solid #e5e7eb;
+  border-top: 5px solid #2563eb;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

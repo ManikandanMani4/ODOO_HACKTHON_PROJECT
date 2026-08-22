@@ -1,48 +1,36 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import LoginPage from "./pages/LoginPage";
-import SignupPage from "./pages/SignupPage";
-import ForgotPasswordPage from "./pages/ForgotPasswordPage";
-import RoleRedirectPage from "./pages/RoleRedirectPage";
-import EmployeeDashboard from "./pages/EmployeeDashboard";
-import AdminDashboard from "./pages/AdminDashboard";
+import LoginPage from "./src/pages/LoginPage";
+import SignupPage from "./src/pages/SignupPage";
+import RoleRedirectPage from "./src/pages/RoleRedirectPage";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        
-        {/* Default Page */}
         <Route path="/" element={<LoginPage />} />
-
-        {/* Authentication Pages */}
-        <Route path="/login" element={<LoginPage />} />
 
         <Route path="/signup" element={<SignupPage />} />
 
-        <Route
-          path="/forgot-password"
-          element={<ForgotPasswordPage />}
-        />
-
-        {/* Role Redirect Page */}
         <Route
           path="/role-redirect"
           element={<RoleRedirectPage />}
         />
 
-        {/* Employee Dashboard */}
+        <Route
+          path="/forgot-password"
+          element={<h1>Forgot Password Page - Coming Soon</h1>}
+        />
+
         <Route
           path="/employee-dashboard"
-          element={<EmployeeDashboard />}
+          element={<h1>Employee Dashboard</h1>}
         />
 
-        {/* Admin Dashboard */}
         <Route
           path="/admin-dashboard"
-          element={<AdminDashboard />}
+          element={<h1>Admin Dashboard</h1>}
         />
-
       </Routes>
     </BrowserRouter>
   );
