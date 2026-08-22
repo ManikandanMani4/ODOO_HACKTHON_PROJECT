@@ -1,0 +1,153 @@
+.employee-dashboard {
+  min-height: 100vh;
+  background: #f4f7fb;
+  font-family: Arial, sans-serif;
+}
+
+.employee-header {
+  min-height: 80px;
+  padding: 15px 50px;
+
+  background: #2563eb;
+  color: white;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.employee-brand h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.employee-brand p {
+  margin: 5px 0 0;
+  font-size: 14px;
+}
+
+.employee-logout-button {
+  padding: 10px 20px;
+
+  background: white;
+  color: #2563eb;
+
+  border: none;
+  border-radius: 8px;
+
+  font-size: 14px;
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+.employee-logout-button:hover {
+  background: #eaf2ff;
+}
+
+.employee-content {
+  max-width: 1150px;
+  margin: auto;
+
+  padding: 45px 25px;
+}
+
+.employee-welcome {
+  margin-bottom: 35px;
+}
+
+.employee-welcome h2 {
+  margin-bottom: 8px;
+  color: #1e293b;
+}
+
+.employee-welcome p {
+  color: #64748b;
+  font-size: 16px;
+}
+
+.employee-dashboard-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(230px, 1fr));
+
+  gap: 22px;
+}
+
+.employee-dashboard-card {
+  background: white;
+
+  padding: 25px;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.08);
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.employee-dashboard-card:hover {
+  transform: translateY(-6px);
+
+  box-shadow:
+    0 10px 25px rgba(37, 99, 235, 0.15);
+}
+
+.employee-dashboard-icon {
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #eff6ff;
+
+  border-radius: 12px;
+
+  font-size: 24px;
+
+  margin-bottom: 18px;
+}
+
+.employee-dashboard-card h3 {
+  margin: 0 0 10px;
+  color: #1e293b;
+}
+
+.employee-dashboard-card p {
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.employee-action-button {
+  margin-top: 15px;
+
+  padding: 10px 15px;
+
+  background: #2563eb;
+  color: white;
+
+  border: none;
+  border-radius: 7px;
+
+  cursor: pointer;
+}
+
+.employee-action-button:hover {
+  background: #1d4ed8;
+}
+
+@media (max-width: 600px) {
+  .employee-header {
+    padding: 15px 20px;
+  }
+
+  .employee-content {
+    padding: 30px 15px;
+  }
+}

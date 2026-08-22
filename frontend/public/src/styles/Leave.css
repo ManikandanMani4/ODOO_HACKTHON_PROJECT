@@ -1,0 +1,57 @@
+/* =========================
+   ROLE SELECTION
+========================= */
+
+.role-options {
+  display: flex;
+  gap: 12px;
+}
+
+.role-option {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+
+  padding: 15px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.role-option:hover {
+  border-color: #2563eb;
+}
+
+.role-option input {
+  width: auto;
+  margin-top: 4px;
+  accent-color: #2563eb;
+}
+
+.selected-role {
+  border: 2px solid #2563eb;
+  background: #eff6ff;
+}
+
+.role-option strong {
+  display: block;
+  color: #1e293b;
+  margin-bottom: 4px;
+}
+
+.role-option p {
+  margin: 0;
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+@media (max-width: 450px) {
+  .role-options {
+    flex-direction: column;
+  }
+}

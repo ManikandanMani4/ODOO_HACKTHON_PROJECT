@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AttendanceService from "../../services/AttendanceService";
+import "../../styles/Attendance.css";
 
 function AttendanceSummaryPage() {
   const navigate = useNavigate();
@@ -16,41 +17,60 @@ function AttendanceSummaryPage() {
   };
 
   if (!summary) {
-    return <h2>Loading attendance summary...</h2>;
+    return (
+      <div className="summary-page">
+        <h2>Loading attendance summary...</h2>
+      </div>
+    );
   }
 
   return (
-    <div>
-      <h1>Attendance Summary</h1>
+    <div className="summary-page">
+      <div className="summary-container">
 
-      <button onClick={() => navigate("/attendance")}>
-        Back to Attendance
-      </button>
+        <h1>Attendance Summary</h1>
 
-      <hr />
+        <button
+          className="attendance-button"
+          onClick={() => navigate("/attendance")}
+        >
+          Back to Attendance
+        </button>
 
-      <h2>Monthly Attendance Overview</h2>
+        <h2>Monthly Attendance Overview</h2>
 
-      <p>
-        <strong>Total Attendance Records:</strong>{" "}
-        {summary.totalRecords}
-      </p>
+        <div className="summary-grid">
 
-      <p>
-        <strong>Present Days:</strong>{" "}
-        {summary.presentDays}
-      </p>
+          <div className="summary-card">
+            <h3>Total Attendance Records</h3>
+            <p>{summary.totalRecords}</p>
+          </div>
 
-      <p>
-        <strong>Completed Days:</strong>{" "}
-        {summary.completedDays}
-      </p>
+          <div className="summary-card">
+            <h3>Present Days</h3>
+            <p>{summary.presentDays}</p>
+          </div>
 
-      <hr />
+          <div className="summary-card">
+            <h3>Completed Days</h3>
+            <p>{summary.completedDays}</p>
+          </div>
 
-      <button onClick={loadSummary}>
-        Refresh Summary
-      </button>
+          <div className="summary-card">
+            <h3>Attendance Percentage</h3>
+            <p>{summary.attendancePercentage}%</p>
+          </div>
+
+        </div>
+
+        <button
+          className="attendance-button"
+          onClick={loadSummary}
+        >
+          Refresh Summary
+        </button>
+
+      </div>
     </div>
   );
 }

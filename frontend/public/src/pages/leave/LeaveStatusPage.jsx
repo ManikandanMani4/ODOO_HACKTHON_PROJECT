@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LeaveService from "../../services/LeaveService";
+import "../../styles/Leave.css";
 
 function LeaveStatusPage() {
   const navigate = useNavigate();
-
   const [leaves, setLeaves] = useState([]);
 
   useEffect(() => {
@@ -29,46 +29,72 @@ function LeaveStatusPage() {
   ).length;
 
   return (
-    <div>
-      <h1>Leave Status</h1>
+    <div className="leave-page">
+      <div className="leave-container">
 
-      <button onClick={() => navigate("/leave/apply")}>
-        Apply Leave
-      </button>
+        <h1>Leave Status</h1>
 
-      <br />
-      <br />
+        <p className="leave-description">
+          View the summary of all your leave requests.
+        </p>
 
-      <h2>Leave Summary</h2>
+        <button
+          className="back-button"
+          onClick={() => navigate("/employee-dashboard")}
+        >
+          ← Back to Dashboard
+        </button>
 
-      <p>
-        <strong>Total Leave Requests:</strong> {leaves.length}
-      </p>
+        <div className="leave-summary-grid">
 
-      <p>
-        <strong>Pending:</strong> {pendingLeaves}
-      </p>
+          <div className="leave-summary-card">
+            <h3>Total Requests</h3>
+            <p>{leaves.length}</p>
+          </div>
 
-      <p>
-        <strong>Approved:</strong> {approvedLeaves}
-      </p>
+          <div className="leave-summary-card">
+            <h3>Pending</h3>
+            <p>{pendingLeaves}</p>
+          </div>
 
-      <p>
-        <strong>Rejected:</strong> {rejectedLeaves}
-      </p>
+          <div className="leave-summary-card">
+            <h3>Approved</h3>
+            <p>{approvedLeaves}</p>
+          </div>
 
-      <br />
+          <div className="leave-summary-card">
+            <h3>Rejected</h3>
+            <p>{rejectedLeaves}</p>
+          </div>
 
-      <button onClick={() => navigate("/leave/history")}>
-        View Leave History
-      </button>
+        </div>
 
-      <br />
-      <br />
+        <div className="leave-navigation-actions">
 
-      <button onClick={() => navigate("/attendance")}>
-        Back to Attendance
-      </button>
+          <button
+            className="leave-button"
+            onClick={() => navigate("/leave/apply")}
+          >
+            Apply Leave
+          </button>
+
+          <button
+            className="leave-button"
+            onClick={() => navigate("/leave/history")}
+          >
+            View Leave History
+          </button>
+
+          <button
+            className="leave-button"
+            onClick={loadLeaveStatus}
+          >
+            Refresh Status
+          </button>
+
+        </div>
+
+      </div>
     </div>
   );
 }
