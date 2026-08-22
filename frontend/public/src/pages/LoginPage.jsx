@@ -1,135 +1,222 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import "../styles/LoginPage.css";
 
 function LoginPage() {
   const navigate = useNavigate();
 
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
+  const [role, setRole] = useState("employee");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
 
-    console.log("Login Data:", formData);
+    if (!email || !password) {
+      alert("Please enter your email and password");
+      return;
+    }
 
-    // Temporary role for testing
-    localStorage.setItem("userRole", "admin");
+    localStorage.setItem("userRole", role);
 
-    navigate("/role-redirect");
+    if (rememberMe) {
+      localStorage.setItem("rememberedEmail", email);
+    } else {
+      localStorage.removeItem("rememberedEmail");
+    }
+
+    if (role === "hr") {
+      navigate("/admin-dashboard");
+    } else {
+      navigate("/employee-dashboard");
+    }
   };
 
   return (
     <div className="login-page">
 
-      <div className="login-container">
+      {/* Floating background shapes */}
+      <div className="floating-shape shape-one"></div>
+      <div className="floating-shape shape-two"></div>
+      <div className="floating-shape shape-three"></div>
 
-        {/* Left Section */}
+      <div className="login-wrapper">
+
+        {/* LEFT SIDE */}
         <div className="login-left">
+          <div className="brand-content">
 
-          <h1>DayFlow</h1>
+            <div className="brand-badge">
+              DAYFLOW
+            </div>
 
-          <h2>Welcome Back!</h2>
+            <h1>Work smarter.<br />Flow better.</h1>
 
-          <p>
-            Manage your work, attendance, tasks and daily
-            activities all in one place.
-          </p>
+            <p className="brand-description">
+              Manage employees, attendance, tasks and daily work
+              from one simple platform.
+            </p>
 
+            <div className="feature-list">
+              <div className="feature-item">
+                <span className="feature-dot"></span>
+                Manage daily tasks
+              </div>
+
+              <div className="feature-item">
+                <span className="feature-dot"></span>
+                Track attendance easily
+              </div>
+
+              <div className="feature-item">
+                <span className="feature-dot"></span>
+                Manage your workforce
+              </div>
+            </div>
+
+          </div>
         </div>
 
-        {/* Right Section */}
+
+        {/* RIGHT SIDE */}
         <div className="login-right">
 
           <div className="login-card">
 
-            <h2>Login</h2>
+            <div className="login-header">
+              <div className="small-logo">DayFlow</div>
 
-            <p className="subtitle">
-              Enter your details to access your account
-            </p>
+              <h2>Welcome back</h2>
 
-            <form onSubmit={handleSubmit}>
+              <p>
+                Sign in to access your workspace
+              </p>
+            </div>
 
+
+            <form onSubmit={handleLogin}>
+
+              {/* ROLE BOXES */}
+              <div className="role-section">
+
+                <label className="section-label">
+                  Choose your workspace
+                </label>
+
+                <div className="role-box-container">
+
+                  <button
+                    type="button"
+                    className={`small-role-box ${
+                      role === "employee" ? "active-role" : ""
+                    }`}
+                    onClick={() => setRole("employee")}
+                  >
+                    <div className="role-symbol">
+                      E
+                    </div>
+
+                    <div className="role-content">
+                      <strong>Employee</strong>
+                      <span>My workspace</span>
+                    </div>
+                  </button>
+
+
+                  <button
+                    type="button"
+                    className={`small-role-box ${
+                      role === "hr" ? "active-role" : ""
+                    }`}
+                    onClick={() => setRole("hr")}
+                  >
+                    <div className="role-symbol">
+                      HR
+                    </div>
+
+                    <div className="role-content">
+                      <strong>HR</strong>
+                      <span>Management</span>
+                    </div>
+                  </button>
+
+                </div>
+              </div>
+
+
+              {/* EMAIL */}
               <div className="input-group">
-
                 <label>Email Address</label>
 
                 <input
                   type="email"
-                  name="email"
-                  placeholder="Enter your email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
+                  placeholder="Enter your email address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
-
               </div>
 
-              <div className="input-group">
 
+              {/* PASSWORD */}
+              <div className="input-group">
                 <label>Password</label>
 
                 <input
                   type="password"
-                  name="password"
                   placeholder="Enter your password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
-
               </div>
 
+
+              {/* OPTIONS */}
               <div className="login-options">
 
-                <label className="remember-me">
+                <label className="remember-option">
+                  <input
+                    type="checkbox"
+                    checked={rememberMe}
+                    onChange={(e) =>
+                      setRememberMe(e.target.checked)
+                    }
+                  />
 
-                  <input type="checkbox" />
-
-                  Remember me
-
+                  <span>Remember me</span>
                 </label>
 
-                <span
-                  className="forgot-password"
-                  onClick={() =>
-                    navigate("/forgot-password")
-                  }
+                <Link
+                  to="/forgot-password"
+                  className="forgot-link"
                 >
-                  Forgot Password?
-                </span>
+                  Forgot password?
+                </Link>
 
               </div>
+
 
               <button
                 type="submit"
                 className="login-button"
               >
-                Login
+                Sign In
               </button>
 
             </form>
 
+
+            <div className="divider">
+              <span></span>
+              <p>New to DayFlow?</p>
+              <span></span>
+            </div>
+
+
             <p className="signup-text">
-
-              Don't have an account?{" "}
-
-              <span
-                onClick={() => navigate("/signup")}
-              >
-                Sign Up
-              </span>
-
+              <Link to="/signup">
+                Create your account
+              </Link>
             </p>
 
           </div>
@@ -137,7 +224,6 @@ function LoginPage() {
         </div>
 
       </div>
-
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import "../styles/SignupPage.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
