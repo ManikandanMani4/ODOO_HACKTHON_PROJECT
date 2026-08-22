@@ -1,0 +1,116 @@
+/* Employee Management Page */
+
+.module-page {
+
+    min-height:100vh;
+
+    padding:40px;
+
+    background:#f1f5f9;
+
+    font-family:Arial, sans-serif;
+
+}
+
+
+
+.module-page h1 {
+
+    text-align:center;
+
+    color:#2563eb;
+
+    font-size:32px;
+
+    margin-bottom:25px;
+
+}
+
+
+
+/* Back Button */
+
+.module-page button {
+
+    padding:12px 22px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#2563eb;
+
+    color:white;
+
+    font-size:15px;
+
+    cursor:pointer;
+
+    margin-bottom:25px;
+
+}
+
+
+.module-page button:hover {
+
+    background:#1d4ed8;
+
+}
+
+
+
+/* Table */
+
+.module-page table {
+
+    width:100%;
+
+    max-width:900px;
+
+    margin:auto;
+
+    background:white;
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+    border-collapse:collapse;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+
+}
+
+
+
+.module-page th {
+
+    background:#2563eb;
+
+    color:white;
+
+    padding:15px;
+
+    text-align:left;
+
+}
+
+
+
+.module-page td {
+
+    padding:15px;
+
+    color:#334155;
+
+    border-bottom:1px solid #e2e8f0;
+
+}
+
+
+
+.module-page tr:hover {
+
+    background:#f8fafc;
+
+}

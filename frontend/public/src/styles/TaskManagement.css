@@ -1,0 +1,130 @@
+/* Task Management Page */
+
+
+.module-page {
+
+    min-height:100vh;
+
+    padding:40px;
+
+    background:#f8fafc;
+
+    font-family:Arial, sans-serif;
+
+}
+
+
+
+.module-page h1 {
+
+    text-align:center;
+
+    color:#2563eb;
+
+    font-size:32px;
+
+    margin-bottom:25px;
+
+}
+
+
+
+/* Back Button */
+
+
+.module-page button {
+
+    padding:12px 22px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#0f172a;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+}
+
+
+
+.module-page button:hover {
+
+    background:#334155;
+
+}
+
+
+
+/* Task Table */
+
+
+.module-page table {
+
+    width:100%;
+
+    max-width:1000px;
+
+    margin:30px auto;
+
+    border-collapse:collapse;
+
+    background:white;
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.1);
+
+}
+
+
+
+.module-page th {
+
+    padding:16px;
+
+    background:#2563eb;
+
+    color:white;
+
+    text-align:left;
+
+}
+
+
+
+.module-page td {
+
+    padding:16px;
+
+    border-bottom:1px solid #e2e8f0;
+
+    color:#334155;
+
+}
+
+
+
+.module-page tr:hover {
+
+    background:#eff6ff;
+
+}
+
+
+
+/* Status */
+
+
+.module-page td:last-child {
+
+    font-weight:600;
+
+}
