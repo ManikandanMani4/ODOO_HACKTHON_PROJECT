@@ -1,52 +1,94 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import RoleRedirectPage from "./pages/RoleRedirectPage";
-import AdminDashboard from "./pages/AdminDashboard";
-import EmployeeDashboard from "./pages/EmployeeDashboard";
+
+import AttendancePage from "./pages/attendance/AttendancePage";
+import AttendanceHistoryPage from "./pages/attendance/AttendanceHistoryPage";
+import AttendanceSummaryPage from "./pages/attendance/AttendanceSummaryPage";
+
+import ApplyLeavePage from "./pages/leave/ApplyLeavePage";
+import LeaveHistoryPage from "./pages/leave/LeaveHistoryPage";
+import LeaveStatusPage from "./pages/leave/LeaveStatusPage";
+import AdminLeaveApprovalPage from "./pages/leave/AdminLeaveApprovalPage";
 
 function App() {
   return (
-    <Routes>
+    <BrowserRouter>
+      <Routes>
 
-      {/* Login */}
-      <Route path="/" element={<LoginPage />} />
+        {/* Authentication */}
+        <Route path="/" element={<LoginPage />} />
 
-      {/* Signup */}
-      <Route path="/signup" element={<SignupPage />} />
+        <Route path="/signup" element={<SignupPage />} />
 
-      {/* Forgot Password */}
-      <Route
-        path="/forgot-password"
-        element={<ForgotPasswordPage />}
-      />
+        <Route
+          path="/forgot-password"
+          element={<ForgotPasswordPage />}
+        />
 
-      {/* Role Redirect */}
-      <Route
-        path="/role-redirect"
-        element={<RoleRedirectPage />}
-      />
+        <Route
+          path="/role-redirect"
+          element={<RoleRedirectPage />}
+        />
 
-      {/* Dashboards */}
-      <Route
-        path="/admin-dashboard"
-        element={<AdminDashboard />}
-      />
 
-      <Route
-        path="/employee-dashboard"
-        element={<EmployeeDashboard />}
-      />
+        {/* Dashboards */}
+        <Route
+          path="/admin-dashboard"
+          element={<h1>Admin Dashboard - Coming Soon</h1>}
+        />
 
-      {/* Unknown page */}
-      <Route
-        path="*"
-        element={<Navigate to="/" replace />}
-      />
+        <Route
+          path="/employee-dashboard"
+          element={<h1>Employee Dashboard - Coming Soon</h1>}
+        />
 
-    </Routes>
+
+        {/* Attendance Management */}
+        <Route
+          path="/attendance"
+          element={<AttendancePage />}
+        />
+
+        <Route
+          path="/attendance/history"
+          element={<AttendanceHistoryPage />}
+        />
+
+        <Route
+          path="/attendance/summary"
+          element={<AttendanceSummaryPage />}
+        />
+
+
+        {/* Leave Management */}
+        <Route
+          path="/leave/apply"
+          element={<ApplyLeavePage />}
+        />
+
+        <Route
+          path="/leave/history"
+          element={<LeaveHistoryPage />}
+        />
+
+        <Route
+          path="/leave/status"
+          element={<LeaveStatusPage />}
+        />
+
+
+        {/* Admin Leave Approval */}
+        <Route
+          path="/admin/leave-approval"
+          element={<AdminLeaveApprovalPage />}
+        />
+
+      </Routes>
+    </BrowserRouter>
   );
 }
 
